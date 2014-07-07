@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Globish1500</string>
+    <string name="admob_id">ca-app-pub-4623298212622664/3911393437</string>
+    <string name="developer_email">mrp1q7z@gmail.com</string>
+    <string name="english_tab_name">英語</string>
+    <string name="japanese_tab_name">日本語</string>
+    <string name="example_tab_name">使用例</string>
+    <string name="err_dialog_title">エラー報告</string>
+    <string name="err_dialog_msg">前回は、エラーで終了してしまい、大変申し訳ありません。今後の改善に役立てますので、開発元にエラーを送っていただけると大変助かります。プライバシーに関する情報は送信されません</string>
+    <string name="err_dialog_msg2">大変申し訳ありません。予期せぬエラーが発生しました。今後の改善に役立てますので、開発元にエラーを送っていただけると大変助かります。プライバシーに関する情報は送信されません</string>
+    <string name="send">送信</string>
+    <string name="cancel">キャンセル</string>
+    <string name="auto_speak_on">オン</string>
+    <string name="auto_speak_off">OFF</string>
+    <string name="now_setting">現在値：</string>
+    <string name="action_omit_learned">覚えたものは除く</string>
+    <string name="action_settings">設定</string>
+    <string name="action_help">使い方</string>
+    <string name="not_memorize">まだ覚えてない (%d)</string>
+    <string name="new_learn">新たに覚える (%d)</string>
+    <string name="memorized">覚えた！</string>
+    <string name="cancel_memorized">やっぱまだ覚えてません</string>
+
+</resources>

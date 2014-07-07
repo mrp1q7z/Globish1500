@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="dark_textColor">#fdf6e3</color>
+    <color name="dark_backColor">#859900</color>
+
+    <color name="light_textColor">#859900</color>
+    <color name="light_backColor">#fdf6e3</color>
+
+    <color name="theme.dialogHead">#282828</color>
+    <color name="theme.dialogBody">#ffffff</color>
+    <color name="theme.dialogFooter">#282828</color>
+
+    <color name="theme_selectColor">#995781a9</color>
+    <color name="theme_backColor">#eeffffff</color>
+    <color name="theme_settingColor">#282828</color>
+
+</resources>

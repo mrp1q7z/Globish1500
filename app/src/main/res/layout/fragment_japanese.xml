@@ -1,0 +1,85 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/main_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/light_backColor"
+        android:orientation="vertical"
+        android:padding="5dp">
+
+        <TextView
+            android:id="@+id/japanese"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:paddingTop="5sp"
+            android:text="英語"
+            android:textSize="32sp" />
+
+        <TextView
+            android:id="@+id/part_of_speech"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:paddingTop="10sp"
+            android:text="動詞"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/memorized_button"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:drawableLeft="@drawable/abc_ic_cab_done_holo_light"
+            android:text="@string/memorized" />
+
+        <TextView
+            android:id="@+id/example"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="30sp"
+            android:text="彼はイギリス人だ"
+            android:textSize="16sp"
+            android:visibility="gone" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/curtain2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/dark_backColor"
+        android:clickable="true">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="日本語"
+            android:textColor="@color/dark_textColor"
+            android:textSize="24sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/curtain"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/dark_backColor"
+        android:clickable="true">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="日本語"
+            android:textColor="@color/dark_textColor"
+            android:textSize="24sp" />
+    </LinearLayout>
+
+</FrameLayout>

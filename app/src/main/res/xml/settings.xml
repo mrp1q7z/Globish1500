@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:title="設定画面" >
+
+    <CheckBoxPreference
+        android:defaultValue="true"
+        android:key="AutoSpeak"
+        android:summary="カード表示と同時に発音します"
+        android:title="自動で発音" />
+
+    <PreferenceCategory android:title="このアプリについて" >
+        <com.yojiokisoft.globish1500.activity.VersionDialogPreference
+            android:dialogMessage=""
+            android:dialogTitle="バージョン"
+            android:key="Version"
+            android:summary="@string/app_name"
+            android:title="バージョン" />
+
+        <ListPreference
+            android:dialogTitle="お問い合わせ"
+            android:entries="@array/inquiry_key"
+            android:entryValues="@array/inquiry_val"
+            android:key="Inquiry"
+            android:summary="ご意見、ご質問、苦情など、お気軽にお問い合わせください"
+            android:title="お問い合わせ" />
+    </PreferenceCategory>
+
+</PreferenceScreen>
