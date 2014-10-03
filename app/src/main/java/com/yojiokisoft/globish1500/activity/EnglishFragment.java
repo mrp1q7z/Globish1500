@@ -133,6 +133,8 @@ public class EnglishFragment extends Fragment {
     private void printCard(English english) {
         mEnglishText.setText(english.english);
         mPhoneticSymbolText.setText(english.phonetic_symbol);
+        mEnglishText.setBackgroundColor(getResources().getColor(R.color.dark_backColor));
+        mPhoneticSymbolText.setBackgroundColor(getResources().getColor(R.color.dark_backColor));
 
         if (App.getInstance().getCardDao().isPrevCard()) {
             mPrevButton.setVisibility(View.VISIBLE);

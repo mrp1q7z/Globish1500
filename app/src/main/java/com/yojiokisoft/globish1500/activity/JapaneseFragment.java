@@ -232,6 +232,7 @@ public class JapaneseFragment extends Fragment {
             }
             Japanese japanese = App.getInstance().getCardDao().getJapanese();
             if (japanese == null) {
+                Toast.makeText(getActivity(), "学習履歴の保存に失敗", Toast.LENGTH_LONG).show();
                 return;
             }
             mJapaneseText.setText(japanese.japanese);
@@ -239,7 +240,10 @@ public class JapaneseFragment extends Fragment {
             learningLog.learn_date = MyDate.getNowDate();
             learningLog.english_id = japanese.english_id;
             learningLog.memorized = "0";
-            mLearningLogDao.createIfNotExists(learningLog);
+            int ret = mLearningLogDao.createIfNotExists(learningLog);
+            if (ret != 1) {
+                Toast.makeText(getActivity(), "学習履歴の保存に失敗: ret=" + ret, Toast.LENGTH_LONG).show();
+            }
         }
     };
 
