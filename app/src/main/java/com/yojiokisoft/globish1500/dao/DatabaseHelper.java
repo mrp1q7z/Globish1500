@@ -77,6 +77,9 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
     public static void createPreInstallDatabaseIfNotExists() {
         File file = new File(MyConst.getDatabasePath());
         if (file.exists()) {
+            copyDatabaseFromAsset2();
+            dataMigration();
+            dbFileChange();
             return;
         }
 
@@ -93,6 +96,86 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
         } catch (IOException e) {
             MyLog.writeStackTrace(MyConst.BUG_CAUGHT_FILE, e);
             throw new RuntimeException(e);
+        }
+    }
+
+    /**
+     * DBファイルの入れ替え（現状のDBを削除し、newDBを現状とする）
+     */
+    private static void dbFileChange() {
+        String oldDb = MyConst.getDatabasePath();
+        String newDb = oldDb.replace(".db", "new.db");
+
+        File oldFile = new File(oldDb);
+        File newFile = new File(newDb);
+
+        oldFile.delete();
+        newFile.renameTo(oldFile);
+    }
+
+    /**
+     * データの移行
+     */
+    private static void dataMigration() {
+        SQLiteDatabase oldDb = null;
+        try {
+            // メインデータベースを開く
+            oldDb = App.getInstance().getAppContext().openOrCreateDatabase(MyConst.DATABASE_FILE, Context.MODE_PRIVATE, null);
+
+            // Newデータベースのパスを取得する
+            String newDb = MyConst.getDatabasePath().replace(".db", "new.db");
+
+            // Newデータベースに接続する
+            oldDb.execSQL("attach database '" + newDb + "' as new_db");
+
+            // トランザクションを開始する
+            oldDb.beginTransaction();
+
+            // データを移行する
+            oldDb.execSQL("insert into new_db.learninglog select * from learninglog");
+
+            // コミットする
+            oldDb.setTransactionSuccessful();
+        } catch (Exception e) {
+            MyLog.writeStackTrace(MyConst.BUG_CAUGHT_FILE, e);
+            throw new RuntimeException(e);
+        } finally {
+            if (oldDb != null) {
+                // トランザクションを終了する
+                oldDb.endTransaction();
+
+                // データベースを閉じる
+                oldDb.close();
+            }
+        }
+    }
+
+    /**
+     * asset に格納した DB をデフォルトの DB パスに「名前を変えて」コピーする
+     */
+    private static void copyDatabaseFromAsset2() {
+        InputStream in = null;
+        OutputStream out = null;
+        try {
+            in = App.getInstance().getAppContext().getAssets().open(MyConst.DATABASE_FILE);
+            String dbName = MyConst.getDatabasePath().replace(".db", "new.db");
+            out = new FileOutputStream(dbName);
+
+            byte[] buffer = new byte[1024];
+            int size;
+            while ((size = in.read(buffer)) > 0) {
+                out.write(buffer, 0, size);
+            }
+
+            out.flush();
+            out.close();
+            in.close();
+        } catch (IOException e) {
+            MyLog.writeStackTrace(MyConst.BUG_CAUGHT_FILE, e);
+            throw new RuntimeException(e);
+        } finally {
+            MyFile.closeQuietly(out);
+            MyFile.closeQuietly(in);
         }
     }
 

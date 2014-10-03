@@ -50,6 +50,7 @@ public class VersionDialogPreference extends DialogPreference {
 		TextView textView = new TextView(this.getContext());
 		textView.setText(version);
 		textView.setPadding(10, 10, 10, 10);
+		textView.setTextColor(this.getContext().getResources().getColor(R.color.theme_dialogTextColor));
 		return textView;
 	}
 }
